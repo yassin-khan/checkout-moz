@@ -1,0 +1,12 @@
+# Ficheiro de configuração para o Render.com
+# O Render lê este ficheiro automaticamente para saber como correr a sua aplicação
+
+services:
+  - type: web
+    name: checkout-moz
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
